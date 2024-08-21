@@ -232,7 +232,7 @@ with codecs.open(REVIEW_JSON, 'r', encoding = 'utf-8', errors = 'ignore') as inF
 			else:
 				rating = d['overall']
 				date = d['unixReviewTime']
-				text = simple_tokenizer(d['reviewText'])
+				text = simple_tokenizer(d.get('reviewText',""))
 
 			interactions.append([user, item, rating, date, text])
 

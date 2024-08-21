@@ -44,7 +44,7 @@ input_env			= "{}{}{}".format( CATEGORY_FOLDER, CATEGORY, fp_env )
 
 # NOTE: This is the input file for the pretrained word embeddings
 # NOTE: Specify the correct file!!
-input_embeddings	= "../../GoogleNews-vectors-negative300.bin"
+input_embeddings	= "../GoogleNews-vectors-negative300.bin"
 # ============================================================================= INPUT =============================================================================
 
 
@@ -103,7 +103,7 @@ embeddings = {}
 
 # Load word embeddings
 w2v_model = gensim.models.KeyedVectors.load_word2vec_format(input_embeddings, binary = True)
-w2v_vocab = w2v_model.vocab.keys()
+w2v_vocab = list(w2v_model.key_to_index.keys())
 w2v_vocab_dict = {word: "" for word in w2v_vocab}
 for v in tqdm(vocab, "Processing pretrained vectors"):
 	try:
